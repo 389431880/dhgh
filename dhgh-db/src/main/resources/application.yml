@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    active: db-prd
+  message:
+    encoding: UTF-8

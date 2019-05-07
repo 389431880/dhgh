@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.4.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <!-- 项目信息 -->
+    <groupId>com.dhgh</groupId>
+    <artifactId>dhgh</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <!-- 基本信息 -->
+    <name>dhgh</name>
+    <packaging>pom</packaging>
+    <description>Demo project for Spring Boot</description>
+
+    <!-- 子类工程 -->
+    <modules>
+        <module>dhgh-core</module>
+        <module>dhgh-db</module>
+        <module>dhgh-admin</module>
+        <module>dhgh-door</module>
+    </modules>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <!-- 统一管理依赖的版本号 -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.dhgh</groupId>
+                <artifactId>dhgh-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dhgh</groupId>
+                <artifactId>dhgh-db</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dhgh</groupId>
+                <artifactId>dhgh-admin</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dhgh</groupId>
+                <artifactId>dhgh-door</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

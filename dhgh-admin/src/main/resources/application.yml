@@ -1,0 +1,11 @@
+server:
+  port: 8889
+
+spring:
+  profiles:
+    active: db-prd,core-prd,admin-prd
+  messages:
+    encoding: UTF-8
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8

@@ -1,0 +1,20 @@
+# swagger配置
+swagger:
+  enabled: true
+  api-info:
+    appName: 'dhgh-admin-api'
+    title: 'dhgh-admin-api'
+    description: '后台接口服务'
+    license: ''
+    license-url: ''
+    version: 'v1.0'
+    contact-name: 'dhgh-admin'
+    #    contact-url: 'https://coding.net/u/zhuchuangang/p/thor/git'
+    contact-email: ''
+    #    terms-of-service-url: 'https://coding.net/u/zhuchuangang/p/thor/git'
+    base-package: com.dhgh.dhghadmin.web
+    oauth:
+      clientId: test
+      clientSecret: test
+      access-token-uri: http://127.0.0.1:7777/uaa/oauth/token
+      user-authorization-uri: http://127.0.0.1:7777/uaa/oauth/authorize

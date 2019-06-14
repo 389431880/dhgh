@@ -13,10 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.util.ObjectUtils;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -45,6 +43,30 @@ public class NewsInformationControllerImpl implements NewsInformationController 
         List<DNewsInformationDTO> list = ListUtils.entityListToModelList(newsPage.getRecords(),DNewsInformationDTO.class);
         simpleDTO = new SimpleDTO<>(CodeEnum.SUCCESS);
         simpleDTO.setData(newDTOPage.setRecords(list));
+
+        return simpleDTO;
+    }
+
+    @Override
+    @GetMapping(value = {SHOW_NEWS_BY_ID, SHOW_NEWS_WITHOUT_ID})
+    public SimpleDTO<DNewsInformationDTO> getNewsById(@PathVariable(value = "id", required = false) Integer id) {
+        SimpleDTO<DNewsInformationDTO> simpleDTO;
+
+        if (ObjectUtils.isEmpty(id)) {
+            simpleDTO = new SimpleDTO<>(CodeEnum.DATA_NOT_FOUND);
+            return simpleDTO;
+        }
+
+        DNewsInformation dNewsInformation = newsInformationService.getDNewsInformationById(id);
+        if (ObjectUtils.isEmpty(dNewsInformation)) {
+            simpleDTO = new SimpleDTO<>(CodeEnum.DATA_NOT_FOUND);
+            return simpleDTO;
+        }
+
+        DNewsInformationDTO dNewsInformationDTO = new DNewsInformationDTO();
+        BeanUtils.copyProperties(dNewsInformation, dNewsInformationDTO);
+        simpleDTO = new SimpleDTO<>(CodeEnum.SUCCESS);
+        simpleDTO.setData(dNewsInformationDTO);
 
         return simpleDTO;
     }

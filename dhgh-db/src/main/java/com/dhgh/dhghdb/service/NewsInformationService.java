@@ -27,5 +27,14 @@ public class NewsInformationService extends ServiceImpl<DNewsInformationMapper, 
         return selectPage(page, wrapper);
     }
 
+    public DNewsInformation getDNewsInformationById(Integer id){
+        EntityWrapper<DNewsInformation> wrapper = new EntityWrapper<>();
+        wrapper.eq("enabled",1);
+        wrapper.eq("deleted",0);
+        wrapper.eq("id",id);
+
+        return selectOne(wrapper);
+    }
+
 
 }
